@@ -6,12 +6,12 @@ require(cowplot)
 
 
 Motencalo.trials <- 10000000
-prior.alpha_offerAonly <-2
-prior.beta_offerAonly <- 8
-prior.alpha_offerANofferB <- 3
-prior.beta_offerANofferB <- 7
-prior.alphaofferBonly <- 8
-prior.betaofferBonly<- 2
+prior.alpha_offerAonly <-200
+prior.beta_offerAonly <- 800
+prior.alpha_offerANofferB <- 300
+prior.beta_offerANofferB <- 700
+prior.alphaofferBonly <- 800
+prior.betaofferBonly<- 200
 
 
 
@@ -38,20 +38,13 @@ plot(ecdf (offerA_offerB_sim/ offerBonly_sim))
 
 
 
-size <- 1000000
+
 
 offerAoffer <- data.frame(group = c('offerBonly', 'offerA_offerB','offerAonly'),
                            return.rate = c(0.92, 0.68,0.918),
                            stringsAsFactors = FALSE)
 
-# get sample distributions
-each.sample.size <- 250
-#num.samples <- 10000
-n.trials <- 1000000
 
-getMean <- function(nIndex, num) {
-  mean(sample_n(df %>% filter(group==offerAoffer$group[nIndex]), num)$returned)
-}
 
 
 offerA_offerB <- data.frame(promo=offerAoffer$group[2], 
